@@ -114,19 +114,12 @@
     fab.id = 'sortx-fab';
     fab.innerHTML =
       '<button class="sortx-fab-main" id="sortx-fab-btn">' +
-        '<svg class="sortx-fab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
-          '<line x1="4" y1="6" x2="18" y2="6"/>' +
-          '<line x1="4" y1="12" x2="14" y2="12"/>' +
-          '<line x1="4" y1="18" x2="10" y2="18"/>' +
-        '</svg>' +
+        '<svg class="sortx-fab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="M11 4h10"/><path d="M11 8h7"/><path d="M11 12h4"/></svg>' +
         '<span class="sortx-fab-text">Sort</span>' +
         '<span class="sortx-fab-count" id="sortx-count">0</span>' +
       '</button>' +
       '<button class="sortx-fab-secondary" id="sortx-autoscroll" title="Auto-scroll to load all users">' +
-        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
-          '<path d="M12 5v14"/>' +
-          '<path d="M19 12l-7 7-7-7"/>' +
-        '</svg>' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>' +
       '</button>';
 
     document.body.appendChild(fab);
@@ -230,8 +223,8 @@
     var pageType = state.currentPage || detectPageType();
     var label = pageType === 'followers' ? 'Followers' : 'Following';
     var descArrow = state.sortOrder === 'desc'
-      ? '<path d="M12 5v14"/><path d="M5 12l7 7 7-7"/>'
-      : '<path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>';
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="M11 4h10"/><path d="M11 8h7"/><path d="M11 12h4"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/><path d="M11 4h10"/><path d="M11 8h7"/><path d="M11 12h4"/></svg>';
     var orderLabel = state.sortOrder === 'desc' ? 'Most first' : 'Least first';
 
     panel.innerHTML =
@@ -246,24 +239,16 @@
               '</span>' +
             '</div>' +
             '<button class="sortx-close" id="sortx-close" aria-label="Close">' +
-              '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
-                '<line x1="18" y1="6" x2="6" y2="18"/>' +
-                '<line x1="6" y1="6" x2="18" y2="18"/>' +
-              '</svg>' +
+              '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
             '</button>' +
           '</div>' +
           '<div class="sortx-toolbar">' +
             '<div class="sortx-search-box">' +
-              '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">' +
-                '<circle cx="11" cy="11" r="8"/>' +
-                '<line x1="21" y1="21" x2="16.65" y2="16.65"/>' +
-              '</svg>' +
+              '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>' +
               '<input type="text" id="sortx-search" class="sortx-search-input" placeholder="Search by name or handle…" autocomplete="off">' +
             '</div>' +
             '<button class="sortx-order-btn" id="sortx-order" title="Toggle sort direction">' +
-              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-                descArrow +
-              '</svg>' +
+              descArrow +
               '<span>' + orderLabel + '</span>' +
             '</button>' +
           '</div>' +
