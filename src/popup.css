@@ -1,0 +1,108 @@
+/* Sort X — Popup Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 300px;
+  background: #000;
+  color: #e7e9ea;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.popup {
+  padding: 20px;
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.popup-logo {
+  flex-shrink: 0;
+}
+
+.popup-header h1 {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #e7e9ea;
+}
+
+.popup-version {
+  font-size: 11px;
+  color: #71767b;
+  font-weight: 500;
+}
+
+/* Description */
+.popup-desc {
+  font-size: 13px;
+  color: #71767b;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.popup-desc strong {
+  color: #e7e9ea;
+}
+
+/* Steps */
+.popup-steps {
+  background: #16181c;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.popup-steps h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e7e9ea;
+  margin-bottom: 8px;
+}
+
+.popup-steps ol {
+  padding-left: 18px;
+  font-size: 13px;
+  color: #e7e9ea;
+}
+
+.popup-steps li {
+  margin-bottom: 4px;
+}
+
+.popup-steps li:last-child {
+  margin-bottom: 0;
+}
+
+.popup-steps strong {
+  color: #1d9bf0;
+}
+
+/* Footer */
+.popup-footer {
+  text-align: center;
+  padding-top: 4px;
+}
+
+.popup-footer a {
+  font-size: 13px;
+  color: #1d9bf0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.popup-footer a:hover {
+  text-decoration: underline;
+}

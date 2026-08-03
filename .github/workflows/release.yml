@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'   # semver only: v1.2.3 or v1.2.3-beta.1
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate semver tag
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9._-]+)?$ ]]; then
+            echo "::error::Tag '$TAG' is not a valid semver (expected vX.Y.Z or vX.Y.Z-suffix)"
+            exit 1
+          fi
+          echo "Tag is valid: $TAG"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build all browser targets
+        run: node build.js
+
+      - name: Zip Chromium build
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          cd dist/chromium
+          zip -r ../../sort-x-chromium-${TAG}.zip .
+          cd ../..
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Sort X ${{ github.ref_name }}
+          body: |
+            ## Sort X ${{ github.ref_name }}
+
+            ### Install instructions
+
+            **Chrome / Edge / Brave / Chromium:**
+            1. Download `sort-x-chromium-${{ github.ref_name }}.zip` below and unzip it
+            2. Go to `chrome://extensions` (or `edge://extensions`)
+            3. Enable **Developer mode** (top-right toggle)
+            4. Click **Load unpacked** and select the unzipped folder
+
+            ---
+            > Automated release built from tag `${{ github.ref_name }}`
+          files: |
+            sort-x-chromium-${{ github.ref_name }}.zip
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}
