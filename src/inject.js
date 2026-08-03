@@ -7,8 +7,8 @@
 (function () {
   'use strict';
 
-  if (window.__sortx_injected) return;
-  window.__sortx_injected = true;
+  if (window[Symbol.for('__sortx')]) return;
+  window[Symbol.for('__sortx')] = true;
 
   function findInstructions(obj, depth) {
     if (!obj || typeof obj !== 'object' || (depth || 0) > 10) return [];
@@ -142,7 +142,7 @@
           followersTotal: followersTotal,
           followingTotal: followingTotal,
         },
-        '*'
+        'https://x.com'
       );
     }
   }

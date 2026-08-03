@@ -1,0 +1,13 @@
+{
+  "name": "sort-x",
+  "version": "1.1.4",
+  "private": true,
+  "description": "Sort your Twitter (X) followers and following lists by follower count for free.",
+  "scripts": {
+    "build": "node build.js",
+    "build:chromium": "node build.js --target chromium"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sort X",
-  "version": "1.0.4",
+  "version": "1.1.4",
   "description": "Sort your Twitter (X) followers and following lists by follower count for free.",
   "permissions": [],
   "host_permissions": [
@@ -21,17 +21,11 @@
       "run_at": "document_start"
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": ["inject.js"],
-      "matches": ["https://x.com/*"]
-    }
-  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icons/icon128.png",
-      "48": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
   },

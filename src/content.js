@@ -6,14 +6,6 @@
 (function () {
   'use strict';
 
-  // Inject page-context script (Fallback for MAIN world)
-  try {
-    var s = document.createElement('script');
-    s.src = chrome.runtime.getURL('inject.js');
-    s.onload = function () { s.remove(); };
-    (document.head || document.documentElement).appendChild(s);
-  } catch (e) {}
-
   // State
   const state = {
     followers: new Map(),   // id -> user
@@ -47,7 +39,8 @@
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
   function detectPageType() {
@@ -72,6 +65,7 @@
 
   // Data handling
   window.addEventListener('message', function (event) {
+    if (event.origin !== 'https://x.com') return;
     if (!event.data || event.data.type !== '__sortx_data') return;
 
     var users = event.data.users || [];
@@ -315,6 +309,9 @@
     listEl.appendChild(fragment);
   }
 
+  var FALLBACK_AVATAR =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect fill='%23333' width='48' height='48' rx='24'/%3E%3C/svg%3E";
+
   function createCard(user, rank) {
     var card = document.createElement('a');
     card.className = 'sortx-card';
@@ -324,16 +321,20 @@
 
     var isSquare = user.profileImageShape === 'Square';
     var rankClass = rank <= 3 ? ' sortx-rank-top' : '';
-    var fallbackAvatar =
-      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect fill='%23333' width='48' height='48' rx='24'/%3E%3C/svg%3E";
+
+    // Build avatar img safely with event listener instead of inline onerror
+    var avatarImg = document.createElement('img');
+    avatarImg.className = 'sortx-avatar' + (isSquare ? ' sortx-avatar-sq' : '');
+    avatarImg.src = user.avatarUrl || FALLBACK_AVATAR;
+    avatarImg.alt = '';
+    avatarImg.loading = 'lazy';
+    avatarImg.addEventListener('error', function () {
+      this.src = FALLBACK_AVATAR;
+    });
 
     card.innerHTML =
       '<span class="sortx-rank' + rankClass + '">#' + rank + '</span>' +
-      '<div class="sortx-avatar-wrap">' +
-        '<img class="sortx-avatar' + (isSquare ? ' sortx-avatar-sq' : '') + '" ' +
-          'src="' + escapeHtml(user.avatarUrl) + '" alt="" loading="lazy" ' +
-          'onerror="this.src=\'' + fallbackAvatar + '\'">' +
-      '</div>' +
+      '<div class="sortx-avatar-wrap"></div>' +
       '<div class="sortx-info">' +
         '<div class="sortx-name-row">' +
           '<span class="sortx-name">' + escapeHtml(user.name) + '</span>' +
@@ -357,6 +358,9 @@
           '<span>following</span>' +
         '</div>' +
       '</div>';
+
+    // Insert the safely-built img element into the avatar wrapper
+    card.querySelector('.sortx-avatar-wrap').appendChild(avatarImg);
 
     return card;
   }
