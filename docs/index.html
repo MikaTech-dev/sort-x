@@ -199,42 +199,123 @@
     <section id="install" class="section alt-bg">
       <div class="container">
         <h2 class="section-title">Installation Instructions</h2>
-        <p class="section-subtitle">Install manually on any Chromium browser for free</p>
+        <p class="section-subtitle">Select your browser to view instructions</p>
 
-        <div class="install-steps">
-          <div class="install-step">
-            <div class="step-badge">1</div>
-            <div class="step-body">
-              <h4>Download Latest Release</h4>
-              <p>Download <code>sort-x-chromium-vX.X.X.zip</code> from <a
-                  href="https://github.com/Mikatech-dev/sort-x/releases" target="_blank" rel="noopener">GitHub
-                  Releases</a> or <a href="https://codeberg.org/Mikatech-dev/sort-x/releases" target="_blank"
-                  rel="noopener">Codeberg Releases</a> and extract the zip file on your computer.</p>
+        <div class="install-tabs-wrapper">
+          <!-- Browser Selection Tabs -->
+          <div class="install-tab-list" role="tablist" aria-label="Browser installation instructions">
+            <button class="install-tab-btn active" role="tab" id="tab-chromium" aria-selected="true"
+              aria-controls="panel-chromium" tabindex="0">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg"
+                class="tab-browser-icon" width="20" height="20" alt="Chromium">
+              <span>Chromium</span>
+            </button>
+            <button class="install-tab-btn" role="tab" id="tab-firefox" aria-selected="false"
+              aria-controls="panel-firefox" tabindex="-1">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firefox/firefox-original.svg"
+                class="tab-browser-icon" width="20" height="20" alt="Firefox">
+              <span>Firefox</span>
+            </button>
+            <button class="install-tab-btn" role="tab" id="tab-safari" aria-selected="false"
+              aria-controls="panel-safari" tabindex="-1">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/safari/safari-original.svg"
+                class="tab-browser-icon" width="20" height="20" alt="Safari">
+              <span>Safari</span>
+            </button>
+          </div>s
+
+          <!-- Tab Panels -->
+          <div class="install-tab-panels">
+            <!-- Chromium Panel -->
+            <div id="panel-chromium" class="install-tab-panel active" role="tabpanel" aria-labelledby="tab-chromium"
+              tabindex="0">
+              <div class="panel-header">
+                <p class="panel-subtitle">Install manually on Chrome, Edge, Brave, Opera, Vivaldi, or any Chromium
+                  browser.</p>
+              </div>
+
+              <div class="install-steps">
+                <div class="install-step">
+                  <div class="step-badge">1</div>
+                  <div class="step-body">
+                    <h4>Download Latest Release</h4>
+                    <p>Download <code>the latest release</code> zip from <a
+                        href="https://github.com/Mikatech-dev/sort-x/releases" target="_blank" rel="noopener">GitHub
+                        Releases</a> or <a href="https://codeberg.org/Mikatech-dev/sort-x/releases" target="_blank"
+                        rel="noopener">Codeberg Releases</a> and extract it on your computer.</p>
+                  </div>
+                </div>
+
+                <div class="install-step">
+                  <div class="step-badge">2</div>
+                  <div class="step-body">
+                    <h4>Open Extensions Page</h4>
+                    <p>In your browser address bar, navigate to <code>chrome://extensions</code> (or
+                      <code>edge://extensions</code> / <code>brave://extensions</code>).
+                    </p>
+                  </div>
+                </div>
+
+                <div class="install-step">
+                  <div class="step-badge">3</div>
+                  <div class="step-body">
+                    <h4>Enable Developer Mode</h4>
+                    <p>Toggle the <strong>Developer mode</strong> switch in the upper right corner of the Extensions
+                      page.</p>
+                  </div>
+                </div>
+
+                <div class="install-step">
+                  <div class="step-badge">4</div>
+                  <div class="step-body">
+                    <h4>Load Unpacked Extension</h4>
+                    <p>Click <strong>Load unpacked</strong> and select the extracted extension directory.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="install-step">
-            <div class="step-badge">2</div>
-            <div class="step-body">
-              <h4>Open Extensions Page</h4>
-              <p>In your browser address bar, enter <code>chrome://extensions</code> (or <code>edge://extensions</code>
-                / <code>brave://extensions</code>).</p>
+            <!-- Firefox Panel -->
+            <div id="panel-firefox" class="install-tab-panel" role="tabpanel" aria-labelledby="tab-firefox" tabindex="0"
+              hidden>
+              <div class="coming-soon-card">
+                <div class="coming-soon-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firefox/firefox-original.svg"
+                    width="52" height="52" alt="Firefox">
+                </div>
+                <h3 class="coming-soon-title">Firefox Support - Coming Soon</h3>
+                <p class="coming-soon-desc">
+                  Firefox support (Gecko WebExtension format) is currently under active development and will be
+                  available in an upcoming release.
+                </p>
+                <div class="coming-soon-actions">
+                  <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary btn-sm">
+                    Star on GitHub or Report an Issue
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="install-step">
-            <div class="step-badge">3</div>
-            <div class="step-body">
-              <h4>Enable Developer Mode</h4>
-              <p>Toggle the <strong>Developer mode</strong> switch in the upper right corner of the Extensions page.</p>
-            </div>
-          </div>
-
-          <div class="install-step">
-            <div class="step-badge">4</div>
-            <div class="step-body">
-              <h4>Load Unpacked Extension</h4>
-              <p>Click the <strong>Load unpacked</strong> button and select the unzipped extension directory.</p>
+            <!-- Safari Panel -->
+            <div id="panel-safari" class="install-tab-panel" role="tabpanel" aria-labelledby="tab-safari" tabindex="0"
+              hidden>
+              <div class="coming-soon-card">
+                <div class="coming-soon-icon-wrapper">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/safari/safari-original.svg"
+                    width="52" height="52" alt="Safari">
+                </div>
+                <h3 class="coming-soon-title">Safari Support - Coming Soon</h3>
+                <p class="coming-soon-desc">
+                  Safari support (macOS & iOS WebExtension format) is planned for a future update.
+                </p>
+                <div class="coming-soon-actions">
+                  <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary btn-sm">
+                    Star on GitHub or report an issue
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -265,7 +346,7 @@
     </div>
   </footer>
 
-  <!-- Dynamic Release Tag Script -->
+  <!-- Dynamic Release Tag & Tab Switching Script -->
   <script>
     (async function () {
       try {
@@ -286,6 +367,60 @@
         // Fallback remains https://github.com/Mikatech-dev/sort-x/releases/latest
       }
     })();
+
+    // Interactive Installation Tabs Switcher
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabs = document.querySelectorAll('.install-tab-btn');
+      const panels = document.querySelectorAll('.install-tab-panel');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          switchTab(this);
+        });
+
+        tab.addEventListener('keydown', function (e) {
+          const tabList = Array.from(tabs);
+          const index = tabList.indexOf(this);
+          let newIndex;
+
+          if (e.key === 'ArrowRight') {
+            newIndex = (index + 1) % tabList.length;
+          } else if (e.key === 'ArrowLeft') {
+            newIndex = (index - 1 + tabList.length) % tabList.length;
+          } else if (e.key === 'Home') {
+            newIndex = 0;
+          } else if (e.key === 'End') {
+            newIndex = tabList.length - 1;
+          }
+
+          if (newIndex !== undefined) {
+            e.preventDefault();
+            tabList[newIndex].focus();
+            switchTab(tabList[newIndex]);
+          }
+        });
+      });
+
+      function switchTab(targetTab) {
+        tabs.forEach(tab => {
+          const isSelected = tab === targetTab;
+          tab.classList.toggle('active', isSelected);
+          tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          tab.setAttribute('tabindex', isSelected ? '0' : '-1');
+        });
+
+        const targetPanelId = targetTab.getAttribute('aria-controls');
+        panels.forEach(panel => {
+          if (panel.id === targetPanelId) {
+            panel.removeAttribute('hidden');
+            panel.classList.add('active');
+          } else {
+            panel.setAttribute('hidden', '');
+            panel.classList.remove('active');
+          }
+        });
+      }
+    });
   </script>
 </body>
 
