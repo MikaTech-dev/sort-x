@@ -71,4 +71,32 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  // Click to Copy for <code> elements
+  document.querySelectorAll('code').forEach(codeEl => {
+    codeEl.setAttribute('data-tooltip', 'Click to copy');
+    codeEl.addEventListener('click', async function () {
+      const textToCopy = this.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        this.setAttribute('data-tooltip', 'Copied!');
+        setTimeout(() => {
+          this.setAttribute('data-tooltip', 'Click to copy');
+        }, 1500);
+      } catch (err) {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        this.setAttribute('data-tooltip', 'Copied!');
+        setTimeout(() => {
+          this.setAttribute('data-tooltip', 'Click to copy');
+        }, 1500);
+      }
+    });
+  });
 });
+

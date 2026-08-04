@@ -17,7 +17,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sort X — Sort Followers & Following by Follower Count">
+  <meta name="twitter:title" content="Sort X - Sort Followers & Following by Follower Count">
   <meta name="twitter:description"
     content="Sort any X (Twitter) profile's Followers or Following list by follower count for free, right in your browser.">
   <meta name="twitter:image" content="sort-x social media thumb.png">
@@ -28,7 +28,14 @@
   <style type="text/tailwindcss">
     @layer base {
       code {
-        @apply font-mono bg-sortx-surface text-sortx-accent py-[2px] px-[7px] rounded-md text-[0.9em] border border-sortx-border;
+        @apply font-mono bg-sortx-surface text-sortx-accent py-[2px] px-[7px] rounded-md text-[0.9em] border border-sortx-border cursor-pointer relative inline-block transition-all duration-150 hover:border-sortx-accent;
+      }
+      code::after {
+        content: attr(data-tooltip);
+        @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-0.5 text-[11px] font-sans font-semibold text-white bg-black/90 border border-sortx-border rounded shadow-md pointer-events-none opacity-0 transition-opacity duration-150 whitespace-nowrap z-10;
+      }
+      code:hover::after {
+        @apply opacity-100;
       }
       a {
         @apply text-sortx-accent no-underline transition-colors duration-150 ease-in-out hover:text-sortx-accent-hover;
