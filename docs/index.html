@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
@@ -7,31 +7,66 @@
   <title>Sort X — Sort Followers & Following by Follower Count</title>
   <meta name="description"
     content="Sort any X (Twitter) profile's Followers or Following list by follower count for free, right in your browser.">
+  
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sort X — Sort Followers & Following by Follower Count">
+  <meta property="og:description" content="Sort any X (Twitter) profile's Followers or Following list by follower count for free, right in your browser.">
+  <meta property="og:image" content="sort-x social media thumb.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sort X — Sort Followers & Following by Follower Count">
+  <meta name="twitter:description" content="Sort any X (Twitter) profile's Followers or Following list by follower count for free, right in your browser.">
+  <meta name="twitter:image" content="sort-x social media thumb.png">
+
   <link rel="icon" type="image/png" href="sort-x-logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="js/tailwind-config.js"></script>
+  <style type="text/tailwindcss">
+    @layer base {
+      code {
+        @apply font-mono bg-sortx-surface text-sortx-accent py-[2px] px-[7px] rounded-md text-[0.9em] border border-sortx-border;
+      }
+      a {
+        @apply text-sortx-accent no-underline transition-colors duration-150 ease-in-out hover:text-sortx-accent-hover;
+      }
+    }
+    .install-tab-panel[hidden] {
+      display: none !important;
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-sortx-bg text-sortx-text-primary font-sans leading-relaxed antialiased">
 
   <!-- Header / Navigation Bar -->
-  <header class="navbar">
-    <div class="nav-container">
-      <a href="#" class="brand">
-        Sort <img src="sort-x-logo.png" alt="X Logo" class="brand-logo-inline">
+  <header class="sticky top-0 z-[100] bg-black/85 backdrop-blur-[12px] border-sortx-border">
+    <div class="max-w-[960px] mx-auto px-6 py-[14px] flex items-center justify-between">
+      <a href="#"
+        class="flex items-center text-sortx-text-primary font-extrabold text-2xl tracking-[-0.03em] leading-none transition-transform duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:text-sortx-text-primary hover:scale-[1.04]">
+        Sort <img src="sort-x-logo.png" alt="Sort X Logo" class="w-[36px] h-[36px] rounded-md object-contain ml-[6px]">
       </a>
-      <nav class="nav-links">
-        <a href="#support" class="nav-link">Support</a>
-        <a href="#how-to-use" class="nav-link">How to Use</a>
-        <a href="#privacy" class="nav-link">Privacy</a>
-        <a href="#install" class="nav-btn-secondary">Install</a>
-        <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer" class="icon-link"
+      <nav class="flex items-center gap-5">
+        <a href="#support"
+          class="hidden sm:inline-block text-sortx-text-secondary font-semibold text-sm transition-colors duration-150 hover:text-sortx-text-primary">Support</a>
+        <a href="#how-to-use"
+          class="hidden sm:inline-block text-sortx-text-secondary font-semibold text-sm transition-colors duration-150 hover:text-sortx-text-primary">How
+          to Use</a>
+        <a href="#privacy"
+          class="hidden sm:inline-block text-sortx-text-secondary font-semibold text-sm transition-colors duration-150 hover:text-sortx-text-primary">Privacy</a>
+        <a href="#install"
+          class="py-[6px] px-[14px] bg-sortx-surface border border-sortx-border text-sortx-text-primary rounded-[20px] text-[13px] font-semibold transition-all duration-150 hover:bg-sortx-surface-hover hover:border-sortx-accent hover:text-sortx-accent">Install</a>
+        <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center text-sortx-text-secondary transition-colors duration-150 hover:text-sortx-text-primary"
           title="GitHub Repository" aria-label="GitHub Repository">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
           </svg>
         </a>
-        <a href="https://codeberg.org/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer" class="icon-link"
+        <a href="https://codeberg.org/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center text-sortx-text-secondary transition-colors duration-150 hover:text-sortx-text-primary"
           title="Codeberg Repository" aria-label="Codeberg Repository">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -44,20 +79,25 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-container">
-        <div class="hero-header-box">
-          <h1 class="hero-title">Sort <img src="sort-x-logo.png" alt="X Logo" class="hero-logo-inline"></h1>
+    <section class="pt-[140px] px-6 pb-[100px] text-center border-b border-sortx-border">
+      <div class="max-w-[680px] mx-auto flex flex-col items-center gap-8">
+        <div class="flex items-center justify-center">
+          <h1
+            class="text-4xl sm:text-[80px] font-extrabold tracking-[-0.03em] text-sortx-text-primary leading-[1.1] flex items-center justify-center">
+            Sort <img src="sort-x-logo.png" alt="X Logo" class="w-[96px] h-[96px] sm:w-[110px] sm:h-[110px] rounded-2xl align-middle ml-3 sm:ml-4">
+          </h1>
         </div>
 
-        <p class="hero-description">
-          Sort any X (Twitter) profile's <strong>Followers</strong> or <strong>Following</strong> list by follower count
-          <strong>for free</strong>, right in your browser.
+        <p class="text-[17px] sm:text-[20px] text-sortx-text-secondary leading-relaxed font-normal">
+          Sort any X (Twitter) profile's <strong class="text-sortx-text-primary font-bold">Followers</strong> or <strong
+            class="text-sortx-text-primary font-bold">Following</strong> list by follower count
+          <strong class="text-sortx-text-primary font-bold">for free</strong>, right in your browser.
         </p>
 
-        <div class="hero-actions">
+        <div class="flex items-center gap-3 flex-wrap justify-center mt-2">
           <a href="https://github.com/Mikatech-dev/sort-x/releases/latest" target="_blank" rel="noopener noreferrer"
-            class="btn btn-primary" id="download-btn">
+            class="inline-flex items-center gap-2 py-3 px-6 rounded-[28px] text-[15px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-none bg-sortx-accent text-white shadow-btn-primary hover:bg-sortx-accent-hover hover:text-white hover:-translate-y-[1px] hover:shadow-btn-primary-hover hover:no-underline"
+            id="download-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -67,7 +107,7 @@
             <span id="download-btn-text">Download Latest Release</span>
           </a>
           <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
-            class="btn btn-secondary">
+            class="inline-flex items-center gap-2 py-3 px-6 rounded-[28px] text-[15px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-none bg-sortx-surface text-sortx-text-primary border border-sortx-border hover:bg-sortx-surface-hover hover:border-sortx-accent hover:text-sortx-text-primary hover:no-underline">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
@@ -75,7 +115,7 @@
             GitHub
           </a>
           <a href="https://codeberg.org/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
-            class="btn btn-secondary">
+            class="inline-flex items-center gap-2 py-3 px-6 rounded-[28px] text-[15px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-none bg-sortx-surface text-sortx-text-primary border border-sortx-border hover:bg-sortx-surface-hover hover:border-sortx-accent hover:text-sortx-text-primary hover:no-underline">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489l4.582-6.873a.857.857 0 0 1 1.158-.235l.07.043 4.512 3.008C20.612 15.938 22 14.125 22 12c0-5.523-4.477-10-10-10zm0 3.2a6.8 6.8 0 0 1 6.8 6.8c0 1.637-.58 3.14-1.554 4.316l-3.328-2.218a2.571 2.571 0 0 0-3.473.705l-.048.077-3.376 5.064A6.786 6.786 0 0 1 5.2 12C5.2 8.244 8.244 5.2 12 5.2z" />
@@ -87,55 +127,56 @@
     </section>
 
     <!-- Support Tracker Section -->
-    <section id="support" class="section">
-      <div class="container">
-        <h2 class="section-title">Platform Support</h2>
-        <p class="section-subtitle">Browser compatibility matrix for Sort X extension</p>
+    <section id="support" class="py-[72px] border-b border-sortx-border">
+      <div class="max-w-[960px] mx-auto px-6">
+        <h2 class="text-[32px] font-extrabold text-center mb-2 text-sortx-text-primary">Platform Support</h2>
+        <p class="text-base text-sortx-text-secondary text-center mb-12">Browser compatibility matrix for Sort X
+          extension</p>
 
-        <div class="support-matrix">
-          <div class="support-row supported">
-            <div class="platform-info">
+        <div class="max-w-[640px] mx-auto bg-sortx-surface border border-sortx-border rounded-sortx overflow-hidden">
+          <div class="flex items-center justify-between py-5 px-6 border-b border-sortx-border">
+            <div class="flex items-center gap-4">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg"
-                class="browser-icon-img" width="28" height="28" alt="Chrome">
+                class="shrink-0" width="28" height="28" alt="Chrome">
               <div>
-                <strong class="platform-name">Chrome & Chromium Browsers</strong>
-                <span class="platform-desc">Chrome, Edge, Brave, Opera, Vivaldi</span>
+                <strong class="block text-base font-bold text-sortx-text-primary">Chrome & Chromium Browsers</strong>
+                <span class="block text-[13px] text-sortx-text-secondary">Chrome, Edge, Brave, Opera, Vivaldi</span>
               </div>
             </div>
-            <div class="status-indicator status-ok">
-              <svg class="status-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00ba7c"
-                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <div class="flex items-center gap-2 text-[#00ba7c] font-bold text-[15px]">
+              <svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00ba7c" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              <span class="status-label">Supported</span>
+              <span>Supported</span>
             </div>
           </div>
 
-          <div class="support-row planned">
-            <div class="platform-info">
+          <div class="flex items-center justify-between py-5 px-6 border-b border-sortx-border">
+            <div class="flex items-center gap-4">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firefox/firefox-original.svg"
-                class="browser-icon-img" width="28" height="28" alt="Firefox">
+                class="shrink-0" width="28" height="28" alt="Firefox">
               <div>
-                <strong class="platform-name">Firefox</strong>
-                <span class="platform-desc">Gecko web extension format</span>
+                <strong class="block text-base font-bold text-sortx-text-primary">Firefox</strong>
+                <span class="block text-[13px] text-sortx-text-secondary">Gecko web extension format</span>
               </div>
             </div>
-            <div class="status-indicator status-pending">
-              <span class="status-label">Planned</span>
+            <div class="flex items-center gap-2 text-sortx-text-secondary font-semibold text-sm">
+              <span>Planned</span>
             </div>
           </div>
 
-          <div class="support-row planned">
-            <div class="platform-info">
+          <div class="flex items-center justify-between py-5 px-6">
+            <div class="flex items-center gap-4">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/safari/safari-original.svg"
-                class="browser-icon-img" width="28" height="28" alt="Safari">
+                class="shrink-0" width="28" height="28" alt="Safari">
               <div>
-                <strong class="platform-name">Safari</strong>
-                <span class="platform-desc">macOS & iOS WebExtension</span>
+                <strong class="block text-base font-bold text-sortx-text-primary">Safari</strong>
+                <span class="block text-[13px] text-sortx-text-secondary">macOS & iOS WebExtension</span>
               </div>
             </div>
-            <div class="status-indicator status-pending">
-              <span class="status-label">Planned</span>
+            <div class="flex items-center gap-2 text-sortx-text-secondary font-semibold text-sm">
+              <span>Planned</span>
             </div>
           </div>
         </div>
@@ -143,46 +184,57 @@
     </section>
 
     <!-- How to Use Section -->
-    <section id="how-to-use" class="section">
-      <div class="container">
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">Three easy steps to rank any followers or following list</p>
+    <section id="how-to-use" class="py-[72px] border-b border-sortx-border">
+      <div class="max-w-[960px] mx-auto px-6">
+        <h2 class="text-[32px] font-extrabold text-center mb-2 text-sortx-text-primary">How It Works</h2>
+        <p class="text-base text-sortx-text-secondary text-center mb-12">Three easy steps to rank any followers or
+          following list</p>
 
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-num">01</div>
-            <h3>Open X Profile</h3>
-            <p>Go to any user profile on X (Twitter) and click into their <strong>Followers</strong> or
-              <strong>Following</strong> tab.
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6">
+          <div
+            class="bg-sortx-surface border border-sortx-border rounded-sortx py-7 px-6 flex flex-col gap-3 transition-all duration-150 ease-in-out hover:-translate-y-0.5 hover:border-sortx-accent">
+            <div class="text-sm font-extrabold text-sortx-accent tracking-[0.05em]">01</div>
+            <h3 class="text-[20px] font-bold text-sortx-text-primary">Open X Profile</h3>
+            <p class="text-sm text-sortx-text-secondary leading-relaxed">Go to any user profile on X (Twitter) and click
+              into their <strong class="text-sortx-text-primary font-bold">Followers</strong> or
+              <strong class="text-sortx-text-primary font-bold">Following</strong> tab.
             </p>
           </div>
-          <div class="card">
-            <div class="card-num">02</div>
-            <h3>Auto-Scroll</h3>
-            <p>Click the <strong>⬇</strong> button to auto-scroll down the list and fetch user data into memory.</p>
+          <div
+            class="bg-sortx-surface border border-sortx-border rounded-sortx py-7 px-6 flex flex-col gap-3 transition-all duration-150 ease-in-out hover:-translate-y-0.5 hover:border-sortx-accent">
+            <div class="text-sm font-extrabold text-sortx-accent tracking-[0.05em]">02</div>
+            <h3 class="text-[20px] font-bold text-sortx-text-primary">Auto-Scroll</h3>
+            <p class="text-sm text-sortx-text-secondary leading-relaxed">Click the <strong
+                class="text-sortx-text-primary font-bold">⬇</strong> button to auto-scroll down the list and fetch user
+              data into memory.</p>
           </div>
-          <div class="card">
-            <div class="card-num">03</div>
-            <h3>Rank & Sort</h3>
-            <p>Click <strong>Sort</strong> to view the interactive ranked modal sorted instantly by follower count.</p>
+          <div
+            class="bg-sortx-surface border border-sortx-border rounded-sortx py-7 px-6 flex flex-col gap-3 transition-all duration-150 ease-in-out hover:-translate-y-0.5 hover:border-sortx-accent">
+            <div class="text-sm font-extrabold text-sortx-accent tracking-[0.05em]">03</div>
+            <h3 class="text-[20px] font-bold text-sortx-text-primary">Rank & Sort</h3>
+            <p class="text-sm text-sortx-text-secondary leading-relaxed">Click <strong
+                class="text-sortx-text-primary font-bold">Sort</strong> to view the interactive ranked modal sorted
+              instantly by follower count.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Privacy Policy Section -->
-    <section id="privacy" class="section">
-      <div class="container">
-        <h2 class="section-title">Privacy Policy</h2>
-        <p class="section-subtitle">100% client-side execution — zero remote data storage</p>
+    <section id="privacy" class="py-[72px] border-b border-sortx-border">
+      <div class="max-w-[960px] mx-auto px-6">
+        <h2 class="text-[32px] font-extrabold text-center mb-2 text-sortx-text-primary">Privacy Policy</h2>
+        <p class="text-base text-sortx-text-secondary text-center mb-12">100% client-side execution — zero remote data
+          storage</p>
 
-        <div class="privacy-content">
-          <p>
-            I believe, your data is yours alone. That's why i built this extension with a strictly <strong>client-side,
+        <div class="max-w-[760px] mx-auto text-lg text-sortx-text-secondary leading-[1.7] text-left">
+          <p class="mb-6">
+            I believe, your data is yours alone. That's why i built this extension with a strictly <strong
+              class="text-sortx-text-primary font-bold">client-side,
               in-memory architecture</strong>. I do not run any remote servers, nor do I collect, transmit, or store any
             of your profile information, followers, or activity.
           </p>
-          <p>
+          <p class="mb-0">
             When you auto-scroll to fetch users, their information is held only in your browser's temporary memory. The
             moment you close or refresh the tab, that data is instantly wiped. There are zero tracking pixels, cookies,
             or telemetry scripts embedded in my code. Don't just take my word for it, my codebase is 100% open source,
@@ -196,101 +248,125 @@
     </section>
 
     <!-- Installation Steps Section -->
-    <section id="install" class="section alt-bg">
-      <div class="container">
-        <h2 class="section-title">Installation Instructions</h2>
-        <p class="section-subtitle">Select your browser to view instructions</p>
+    <section id="install" class="py-[72px] border-b border-sortx-border bg-sortx-surface">
+      <div class="max-w-[960px] mx-auto px-6">
+        <h2 class="text-[32px] font-extrabold text-center mb-2 text-sortx-text-primary">Installation Instructions</h2>
+        <p class="text-base text-sortx-text-secondary text-center mb-12">Select your browser to view instructions</p>
 
-        <div class="install-tabs-wrapper">
+        <div class="max-w-[680px] mx-auto">
           <!-- Browser Selection Tabs -->
-          <div class="install-tab-list" role="tablist" aria-label="Browser installation instructions">
-            <button class="install-tab-btn active" role="tab" id="tab-chromium" aria-selected="true"
-              aria-controls="panel-chromium" tabindex="0">
+          <div
+            class="flex items-center justify-center gap-2 bg-sortx-bg border border-sortx-border p-[6px] rounded-[32px] mb-7 flex-wrap sm:p-[6px] p-1 sm:rounded-[32px] rounded-[20px]"
+            role="tablist" aria-label="Browser installation instructions">
+            <button
+              class="install-tab-btn inline-flex items-center gap-2 py-2.5 px-5 sm:py-2.5 sm:px-5 py-2 px-3 flex-1 sm:flex-none justify-center sm:justify-start rounded-[24px] border-none bg-transparent text-sortx-text-secondary font-inherit text-[13px] sm:text-[15px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] relative outline-none hover:text-sortx-text-primary hover:bg-sortx-surface-hover focus-visible:outline-2 focus-visible:outline-sortx-accent focus-visible:outline-offset-2 [&.active]:bg-sortx-accent [&.active]:text-white [&.active]:shadow-tab-active active"
+              role="tab" id="tab-chromium" aria-selected="true" aria-controls="panel-chromium" tabindex="0">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg"
-                class="tab-browser-icon" width="20" height="20" alt="Chromium">
+                class="shrink-0 align-middle" width="20" height="20" alt="Chromium">
               <span>Chromium</span>
             </button>
-            <button class="install-tab-btn" role="tab" id="tab-firefox" aria-selected="false"
-              aria-controls="panel-firefox" tabindex="-1">
+            <button
+              class="install-tab-btn inline-flex items-center gap-2 py-2.5 px-5 sm:py-2.5 sm:px-5 py-2 px-3 flex-1 sm:flex-none justify-center sm:justify-start rounded-[24px] border-none bg-transparent text-sortx-text-secondary font-inherit text-[13px] sm:text-[15px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] relative outline-none hover:text-sortx-text-primary hover:bg-sortx-surface-hover focus-visible:outline-2 focus-visible:outline-sortx-accent focus-visible:outline-offset-2 [&.active]:bg-sortx-accent [&.active]:text-white [&.active]:shadow-tab-active"
+              role="tab" id="tab-firefox" aria-selected="false" aria-controls="panel-firefox" tabindex="-1">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firefox/firefox-original.svg"
-                class="tab-browser-icon" width="20" height="20" alt="Firefox">
+                class="shrink-0 align-middle" width="20" height="20" alt="Firefox">
               <span>Firefox</span>
             </button>
-            <button class="install-tab-btn" role="tab" id="tab-safari" aria-selected="false"
-              aria-controls="panel-safari" tabindex="-1">
+            <button
+              class="install-tab-btn inline-flex items-center gap-2 py-2.5 px-5 sm:py-2.5 sm:px-5 py-2 px-3 flex-1 sm:flex-none justify-center sm:justify-start rounded-[24px] border-none bg-transparent text-sortx-text-secondary font-inherit text-[13px] sm:text-[15px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] relative outline-none hover:text-sortx-text-primary hover:bg-sortx-surface-hover focus-visible:outline-2 focus-visible:outline-sortx-accent focus-visible:outline-offset-2 [&.active]:bg-sortx-accent [&.active]:text-white [&.active]:shadow-tab-active"
+              role="tab" id="tab-safari" aria-selected="false" aria-controls="panel-safari" tabindex="-1">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/safari/safari-original.svg"
-                class="tab-browser-icon" width="20" height="20" alt="Safari">
+                class="shrink-0 align-middle" width="20" height="20" alt="Safari">
               <span>Safari</span>
             </button>
-          </div>s
+          </div>
 
           <!-- Tab Panels -->
           <div class="install-tab-panels">
             <!-- Chromium Panel -->
-            <div id="panel-chromium" class="install-tab-panel active" role="tabpanel" aria-labelledby="tab-chromium"
-              tabindex="0">
-              <div class="panel-header">
-                <p class="panel-subtitle">Install manually on Chrome, Edge, Brave, Opera, Vivaldi, or any Chromium
+            <div id="panel-chromium" class="install-tab-panel block [&.active]:animate-fade-in-tab active"
+              role="tabpanel" aria-labelledby="tab-chromium" tabindex="0">
+              <div class="text-center mb-6">
+                <p class="text-[15px] text-sortx-text-secondary">Install manually on Chrome, Edge, Brave, Opera,
+                  Vivaldi, or any Chromium
                   browser.</p>
               </div>
 
-              <div class="install-steps">
-                <div class="install-step">
-                  <div class="step-badge">1</div>
+              <div class="max-w-[680px] mx-auto flex flex-col gap-5">
+                <div
+                  class="flex sm:flex-row flex-col gap-3 sm:gap-5 bg-sortx-bg border border-sortx-border rounded-sortx p-5 sm:px-6">
+                  <div
+                    class="w-9 h-9 rounded-full bg-sortx-surface border border-sortx-border text-sortx-accent font-extrabold text-[15px] flex items-center justify-center shrink-0">
+                    1</div>
                   <div class="step-body">
-                    <h4>Download Latest Release</h4>
-                    <p>Download <code>the latest release</code> zip from <a
+                    <h4 class="text-[17px] font-bold text-sortx-text-primary mb-1">Download Latest Release</h4>
+                    <p class="text-sm text-sortx-text-secondary leading-relaxed">Download the latest release zip from <a
                         href="https://github.com/Mikatech-dev/sort-x/releases" target="_blank" rel="noopener">GitHub
                         Releases</a> or <a href="https://codeberg.org/Mikatech-dev/sort-x/releases" target="_blank"
                         rel="noopener">Codeberg Releases</a> and extract it on your computer.</p>
                   </div>
                 </div>
 
-                <div class="install-step">
-                  <div class="step-badge">2</div>
+                <div
+                  class="flex sm:flex-row flex-col gap-3 sm:gap-5 bg-sortx-bg border border-sortx-border rounded-sortx p-5 sm:px-6">
+                  <div
+                    class="w-9 h-9 rounded-full bg-sortx-surface border border-sortx-border text-sortx-accent font-extrabold text-[15px] flex items-center justify-center shrink-0">
+                    2</div>
                   <div class="step-body">
-                    <h4>Open Extensions Page</h4>
-                    <p>In your browser address bar, navigate to <code>chrome://extensions</code> (or
-                      <code>edge://extensions</code> / <code>brave://extensions</code>).
-                    </p>
+                    <h4 class="text-[17px] font-bold text-sortx-text-primary mb-1">Open Extensions Page</h4>
+                    <p class="text-sm text-sortx-text-secondary leading-relaxed">Copy <code>chrome://extensions</code>,
+                      paste in your chromium-based browser's address bar and
+                      press Enter.</p>
                   </div>
                 </div>
 
-                <div class="install-step">
-                  <div class="step-badge">3</div>
+                <div
+                  class="flex sm:flex-row flex-col gap-3 sm:gap-5 bg-sortx-bg border border-sortx-border rounded-sortx p-5 sm:px-6">
+                  <div
+                    class="w-9 h-9 rounded-full bg-sortx-surface border border-sortx-border text-sortx-accent font-extrabold text-[15px] flex items-center justify-center shrink-0">
+                    3</div>
                   <div class="step-body">
-                    <h4>Enable Developer Mode</h4>
-                    <p>Toggle the <strong>Developer mode</strong> switch in the upper right corner of the Extensions
+                    <h4 class="text-[17px] font-bold text-sortx-text-primary mb-1">Enable Developer Mode</h4>
+                    <p class="text-sm text-sortx-text-secondary leading-relaxed">Toggle the <strong
+                        class="text-sortx-text-primary font-bold">Developer mode</strong> switch in the upper right
+                      corner of the Extensions
                       page.</p>
                   </div>
                 </div>
 
-                <div class="install-step">
-                  <div class="step-badge">4</div>
+                <div
+                  class="flex sm:flex-row flex-col gap-3 sm:gap-5 bg-sortx-bg border border-sortx-border rounded-sortx p-5 sm:px-6">
+                  <div
+                    class="w-9 h-9 rounded-full bg-sortx-surface border border-sortx-border text-sortx-accent font-extrabold text-[15px] flex items-center justify-center shrink-0">
+                    4</div>
                   <div class="step-body">
-                    <h4>Load Unpacked Extension</h4>
-                    <p>Click <strong>Load unpacked</strong> and select the extracted extension directory.</p>
+                    <h4 class="text-[17px] font-bold text-sortx-text-primary mb-1">Load Unpacked Extension</h4>
+                    <p class="text-sm text-sortx-text-secondary leading-relaxed">Click <strong
+                        class="text-sortx-text-primary font-bold">Load unpacked</strong> and select the extracted
+                      extension directory.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Firefox Panel -->
-            <div id="panel-firefox" class="install-tab-panel" role="tabpanel" aria-labelledby="tab-firefox" tabindex="0"
-              hidden>
-              <div class="coming-soon-card">
-                <div class="coming-soon-icon-wrapper">
+            <div id="panel-firefox" class="install-tab-panel block [&.active]:animate-fade-in-tab" role="tabpanel"
+              aria-labelledby="tab-firefox" tabindex="0" hidden>
+              <div
+                class="bg-sortx-bg border border-sortx-border rounded-sortx py-12 px-8 text-center flex flex-col items-center gap-4">
+                <div
+                  class="w-20 h-20 rounded-full bg-sortx-surface border border-sortx-border flex items-center justify-center mb-1">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firefox/firefox-original.svg"
                     width="52" height="52" alt="Firefox">
                 </div>
-                <h3 class="coming-soon-title">Firefox Support - Coming Soon</h3>
-                <p class="coming-soon-desc">
+                <h3 class="text-[22px] font-extrabold text-sortx-text-primary">Firefox Support - Coming Soon</h3>
+                <p class="text-[15px] text-sortx-text-secondary max-w-[440px] leading-[1.6]">
                   Firefox support (Gecko WebExtension format) is currently under active development and will be
                   available in an upcoming release.
                 </p>
-                <div class="coming-soon-actions">
+                <div class="mt-2">
                   <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-secondary btn-sm">
+                    class="inline-flex items-center gap-2 py-2 px-5 rounded-[20px] text-[13px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-none bg-sortx-surface text-sortx-text-primary border border-sortx-border hover:bg-sortx-surface-hover hover:border-sortx-accent hover:text-sortx-text-primary hover:no-underline">
                     Star on GitHub or Report an Issue
                   </a>
                 </div>
@@ -298,20 +374,22 @@
             </div>
 
             <!-- Safari Panel -->
-            <div id="panel-safari" class="install-tab-panel" role="tabpanel" aria-labelledby="tab-safari" tabindex="0"
-              hidden>
-              <div class="coming-soon-card">
-                <div class="coming-soon-icon-wrapper">
+            <div id="panel-safari" class="install-tab-panel block [&.active]:animate-fade-in-tab" role="tabpanel"
+              aria-labelledby="tab-safari" tabindex="0" hidden>
+              <div
+                class="bg-sortx-bg border border-sortx-border rounded-sortx py-12 px-8 text-center flex flex-col items-center gap-4">
+                <div
+                  class="w-20 h-20 rounded-full bg-sortx-surface border border-sortx-border flex items-center justify-center mb-1">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/safari/safari-original.svg"
                     width="52" height="52" alt="Safari">
                 </div>
-                <h3 class="coming-soon-title">Safari Support - Coming Soon</h3>
-                <p class="coming-soon-desc">
+                <h3 class="text-[22px] font-extrabold text-sortx-text-primary">Safari Support - Coming Soon</h3>
+                <p class="text-[15px] text-sortx-text-secondary max-w-[440px] leading-[1.6]">
                   Safari support (macOS & iOS WebExtension format) is planned for a future update.
                 </p>
-                <div class="coming-soon-actions">
+                <div class="mt-2">
                   <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-secondary btn-sm">
+                    class="inline-flex items-center gap-2 py-2 px-5 rounded-[20px] text-[13px] font-bold cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] leading-none bg-sortx-surface text-sortx-text-primary border border-sortx-border hover:bg-sortx-surface-hover hover:border-sortx-accent hover:text-sortx-text-primary hover:no-underline">
                     Star on GitHub or report an issue
                   </a>
                 </div>
@@ -324,22 +402,29 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <div class="footer-text">
-          <strong class="footer-title">Sort <img src="sort-x-logo.png" alt="X Logo" class="footer-logo-inline"></strong>
-          <span>Made with 💜 by <a href="https://mikatech.name.ng" target="_blank"
-              rel="noopener noreferrer">Mikatech-dev</a></span>
+  <footer class="py-10 bg-sortx-bg">
+    <div class="max-w-[960px] mx-auto px-6 flex flex-row flex-wrap items-center justify-between gap-5">
+      <div class="flex items-center">
+        <div class="flex flex-col gap-1 text-[13px]">
+          <strong
+            class="flex items-center text-lg font-extrabold tracking-[-0.02em] text-sortx-text-primary leading-none">Sort
+            <img src="sort-x-logo.png" alt="X Logo" class="w-5 h-5 rounded-[4px] object-contain ml-1"></strong>
+          <span class="text-sortx-text-secondary">Made with 💜 by <a href="https://mikatech.name.ng" target="_blank"
+              rel="noopener noreferrer"
+              class="text-sortx-accent no-underline transition-colors duration-150 ease-in-out hover:text-sortx-accent-hover hover:no-underline">Mikatech-dev</a></span>
         </div>
       </div>
 
-      <div class="footer-links">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer">
+      <div class="flex gap-5">
+        <a href="#privacy"
+          class="text-sm font-semibold text-sortx-text-secondary transition-colors duration-150 hover:text-sortx-text-primary hover:no-underline">Privacy
+          Policy</a>
+        <a href="https://github.com/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
+          class="text-sm font-semibold text-sortx-text-secondary transition-colors duration-150 hover:text-sortx-text-primary hover:no-underline">
           GitHub Repo
         </a>
-        <a href="https://codeberg.org/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer">
+        <a href="https://codeberg.org/Mikatech-dev/sort-x" target="_blank" rel="noopener noreferrer"
+          class="text-sm font-semibold text-sortx-text-secondary transition-colors duration-150 hover:text-sortx-text-primary hover:no-underline">
           Codeberg Repo
         </a>
       </div>
@@ -347,81 +432,7 @@
   </footer>
 
   <!-- Dynamic Release Tag & Tab Switching Script -->
-  <script>
-    (async function () {
-      try {
-        const response = await fetch('https://api.github.com/repos/Mikatech-dev/sort-x/releases/latest');
-        if (!response.ok) return;
-        const data = await response.json();
-        if (data.tag_name) {
-          const btnText = document.getElementById('download-btn-text');
-          if (btnText) {
-            btnText.textContent = `Download Release (${data.tag_name})`;
-          }
-          const btn = document.getElementById('download-btn');
-          if (btn && data.html_url) {
-            btn.href = data.html_url;
-          }
-        }
-      } catch (err) {
-        // Fallback remains https://github.com/Mikatech-dev/sort-x/releases/latest
-      }
-    })();
-
-    // Interactive Installation Tabs Switcher
-    document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('.install-tab-btn');
-      const panels = document.querySelectorAll('.install-tab-panel');
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-          switchTab(this);
-        });
-
-        tab.addEventListener('keydown', function (e) {
-          const tabList = Array.from(tabs);
-          const index = tabList.indexOf(this);
-          let newIndex;
-
-          if (e.key === 'ArrowRight') {
-            newIndex = (index + 1) % tabList.length;
-          } else if (e.key === 'ArrowLeft') {
-            newIndex = (index - 1 + tabList.length) % tabList.length;
-          } else if (e.key === 'Home') {
-            newIndex = 0;
-          } else if (e.key === 'End') {
-            newIndex = tabList.length - 1;
-          }
-
-          if (newIndex !== undefined) {
-            e.preventDefault();
-            tabList[newIndex].focus();
-            switchTab(tabList[newIndex]);
-          }
-        });
-      });
-
-      function switchTab(targetTab) {
-        tabs.forEach(tab => {
-          const isSelected = tab === targetTab;
-          tab.classList.toggle('active', isSelected);
-          tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-          tab.setAttribute('tabindex', isSelected ? '0' : '-1');
-        });
-
-        const targetPanelId = targetTab.getAttribute('aria-controls');
-        panels.forEach(panel => {
-          if (panel.id === targetPanelId) {
-            panel.removeAttribute('hidden');
-            panel.classList.add('active');
-          } else {
-            panel.setAttribute('hidden', '');
-            panel.classList.remove('active');
-          }
-        });
-      }
-    });
-  </script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
